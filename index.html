@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Did Baylor Win?</title>
+  </head>
+  <body>
+    <h3>Did Baylor Win?</h3>
+    <h1 id="status"></h1>
+    <span id="valid-for"></span>
+    <script>
+      (function () {
+        fetch("/test")
+                .then((response) => response.json())
+                .then((results) => {
+                        const elem = document.getElementById('status');
+                        elem.innerText = results.team.winner ? "yes" : "no";
+                        const validForElem = document.getElementById('valid-for');
+                        validForElem.innerText = 'Valid For: ' + results.validFor;
+                      });
+      })();
+    </script>
+  </body>
+</html>
