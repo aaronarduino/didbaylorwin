@@ -1,11 +1,20 @@
-<html>
+<!doctype html>
+<html lang="eng">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Did Baylor Win?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
-  <body>
+  <body class="text-center">
+    <br />
     <h3>Did Baylor Win?</h3>
-    <h1 id="status"></h1>
-    <span id="valid-for"></span>
+    <h1 id="status" class="display-1 fw-bold"></h1>
+    <nav class="navbar fixed-bottom bg-light text-center">
+      <div class="container-fluid d-flex justify-content-center">
+        <span id="valid-for" class="text-muted fw-lighter text-center"></span>
+      </div>
+    </nav>
     <script>
       (function () {
         fetch("/test")
@@ -13,6 +22,7 @@
                 .then((results) => {
                         const elem = document.getElementById('status');
                         elem.innerText = results.team.winner ? "yes" : "no";
+                        elem.className = results.team.winner ? elem.className + " text-success" : elem.className + " text-danger";
                         const validForElem = document.getElementById('valid-for');
                         validForElem.innerText = 'Valid For: ' + results.validFor;
                       });
