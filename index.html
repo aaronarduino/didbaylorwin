@@ -21,7 +21,7 @@
                 .then((response) => response.json())
                 .then((results) => {
                         const elem = document.getElementById('status');
-                        elem.innerText = results.team.winner ? "yes" : "no";
+                        elem.innerText = results.team.winner ? "Yes" : "No";
                         elem.className = results.team.winner ? elem.className + " text-success" : elem.className + " text-danger";
                         const validForElem = document.getElementById('valid-for');
                         validForElem.innerText = 'Valid For: ' + results.validFor;

@@ -9,7 +9,7 @@ export default async (request, context) => {
         return context.json({validFor: today, team: {}});
       }
       let baylor = game.game.home.names.full.includes("Baylor") ? game.game.home : game.game.away;
-      console.log({validFor: today, team: baylor});
-      return context.json({validFor: today, team: baylor});
+      console.log({validFor: today.today, team: baylor});
+      return context.json({validFor: today.today, team: baylor});
     });
 };
