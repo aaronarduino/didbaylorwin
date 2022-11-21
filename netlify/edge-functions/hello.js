@@ -1,9 +1,7 @@
 export default async (request, context) => {
-  let today = new Date();
-  let dd = String(today.getDate()).padStart(2, '0');
-  let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  let yyyy = today.getFullYear();
-  return await fetch('https://data.ncaa.com/casablanca/scoreboard/basketball-men/d1/' + yyyy + '/' + mm + '/' + dd + '/scoreboard.json')
+  let today = await fetch('https://data.ncaa.com/casablanca/schedule/basketball-men/d1/today.json')
+    .then((response) => response.json());
+  return await fetch('https://data.ncaa.com/casablanca/scoreboard/basketball-men/d1/' + today.today + '/scoreboard.json')
     .then((response) => response.json())
     .then((data) => {
       let game = data.games.find((g) => g.game.title.includes("Baylor"));
