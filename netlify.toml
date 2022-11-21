@@ -1,3 +1,7 @@
 [[edge_functions]]
 path = "/test"
 function = "hello"
+
+[[edge_functions]]
+path = "/date"
+function = "date"
